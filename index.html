@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>honeybee · para Jimena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,500&family=Figtree:wght@400;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--night:#080a24;--indigo:#17154a;--plum:#3b1d5e;--glow:#ffd96a;--honey:#f2a31b;--rose:#f4a6c8;--moon:#f3f1ff;--mist:#b4b8e6;
+ color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:
+ radial-gradient(70% 40% at 80% 8%,rgba(244,166,200,.18),transparent 70%),
+ radial-gradient(60% 35% at 10% 40%,rgba(242,163,27,.10),transparent 70%),
+ linear-gradient(180deg,var(--night) 0%,var(--indigo) 40%,var(--plum) 100%);
+ color:var(--moon);font:18px/1.7 Figtree,system-ui,sans-serif;overflow-x:hidden}
+#sky{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+main{position:relative;z-index:1}
+section{max-width:620px;margin:0 auto;padding:0 24px}
+
+/* HERO */
+.hero{max-width:none;position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 24px 160px;overflow:hidden}
+.moon{position:absolute;top:9%;left:50%;width:min(62vw,300px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;
+ background:radial-gradient(circle at 35% 30%,#fff 0%,#f3f1ff 45%,#d9d4f5 100%);
+ box-shadow:0 0 60px 20px rgba(243,241,255,.28),0 0 180px 80px rgba(180,150,255,.22);opacity:.92;animation:moonin 3s ease-out both}
+.moon::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 62% 58%,rgba(160,150,200,.28) 0 9%,transparent 10%),radial-gradient(circle at 30% 65%,rgba(160,150,200,.2) 0 6%,transparent 7%),radial-gradient(circle at 55% 25%,rgba(160,150,200,.18) 0 5%,transparent 6%)}
+@keyframes moonin{from{opacity:0;transform:translate(-50%,30px)}}
+.hero>*:not(.moon):not(.hills){position:relative;z-index:2}
+.hand{font-family:Caveat,cursive;font-size:1.9rem;color:var(--rose);margin:0;text-shadow:0 2px 14px rgba(8,10,36,.8)}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(3.8rem,20vw,8rem);line-height:1;margin:.05em 0 .15em;padding:0 .1em;
+ background:linear-gradient(100deg,#ffe9a8 0%,#ffd96a 35%,#f2a31b 70%,#ffd96a 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 4px 24px rgba(242,163,27,.45));animation:rise 2.6s ease-out both,shine 7s ease-in-out 2.6s infinite}
+@keyframes rise{from{opacity:0;letter-spacing:.22em;filter:blur(10px)}}
+@keyframes shine{50%{background-position:100% 0}}
+.lead{color:var(--moon);opacity:.88;max-width:24em;margin:0 0 28px;text-shadow:0 2px 14px rgba(8,10,36,.9)}
+.cue{color:var(--moon);font-size:.92rem;text-decoration:none;padding:10px 22px;border:1px solid rgba(243,241,255,.35);border-radius:999px;backdrop-filter:blur(6px);background:rgba(255,255,255,.06)}
+.cue:focus-visible,.skip:focus-visible,.ff:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:190px;z-index:1;pointer-events:none}
+
+/* HISTORIA */
+.story{padding-top:60px;padding-bottom:20px}
+h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-style:italic;font-size:2.3rem;line-height:1.15;margin:0 0 .5em;color:var(--moon)}
+.story p{margin:0 0 1.25em}
+.story em{color:var(--glow);font-style:italic;font-family:"Cormorant Garamond",Georgia,serif;font-size:1.12em}
+.drop{display:block;margin:6px auto 30px;width:30px;height:46px;filter:drop-shadow(0 0 12px rgba(242,163,27,.6))}
+
+/* PARQUE */
+.park{padding-top:50px}
+.park h2{text-align:center}
+.hud{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 16px;color:var(--mist);font-size:.95rem}
+.jar{width:46px;height:60px;flex:none}
+.scene{position:relative;height:470px;border-radius:30px;overflow:hidden;touch-action:pan-y;
+ background:radial-gradient(60% 40% at 80% 14%,rgba(243,241,255,.16),transparent 70%),linear-gradient(180deg,#0f1040 0%,#2a1a5e 62%,#54306c 100%);
+ border:1px solid rgba(180,184,230,.22);box-shadow:0 30px 80px -20px rgba(0,0,0,.6),inset 0 0 80px rgba(120,90,200,.15)}
+.scene .m2{position:absolute;top:26px;right:30px;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#d9d4f5);box-shadow:0 0 36px 10px rgba(243,241,255,.4)}
+.scene .st{position:absolute;inset:0;background-image:radial-gradient(1.2px 1.2px at 12% 18%,#fff,transparent),radial-gradient(1px 1px at 30% 9%,#fff,transparent),radial-gradient(1.4px 1.4px at 55% 15%,#fff,transparent),radial-gradient(1px 1px at 70% 6%,#fff,transparent),radial-gradient(1px 1px at 40% 28%,#fff,transparent),radial-gradient(1.2px 1.2px at 88% 30%,#fff,transparent),radial-gradient(1px 1px at 8% 38%,#fff,transparent);opacity:.8;animation:tw 4s ease-in-out infinite}
+@keyframes tw{50%{opacity:.35}}
+.scene svg.land{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;pointer-events:none}
+.ff{position:absolute;width:52px;height:52px;margin:-26px 0 0 -26px;border:0;background:transparent;cursor:pointer;border-radius:50%;animation:drift 8s ease-in-out infinite;z-index:3}
+.ff i{position:absolute;inset:17px;border-radius:50%;background:#fff6c9;box-shadow:0 0 6px 3px rgba(255,246,201,.9),0 0 22px 10px rgba(255,217,106,.7),0 0 60px 24px rgba(255,217,106,.35);animation:pulse 2.8s ease-in-out infinite}
+.ff.seen i{background:var(--rose);box-shadow:0 0 14px 6px rgba(244,166,200,.45);animation:none;opacity:.65}
+.ff b{position:absolute;inset:0;border-radius:50%;border:2px solid var(--glow);opacity:0}
+.ff.pop b{animation:ring .9s ease-out}
+@keyframes ring{from{opacity:.9;transform:scale(.3)}to{opacity:0;transform:scale(2.2)}}
+@keyframes pulse{50%{transform:scale(.65);opacity:.75}}
+@keyframes drift{0%,100%{transform:translate(0,0)}33%{transform:translate(12px,-16px)}66%{transform:translate(-10px,-6px)}}
+.bee{position:absolute;left:0;top:0;width:46px;height:36px;z-index:4;pointer-events:none;will-change:transform;filter:drop-shadow(0 0 10px rgba(255,217,106,.55))}
+.wing{transform-origin:22px 14px;animation:flap .12s ease-in-out infinite alternate}
+@keyframes flap{to{transform:scaleY(.45)}}
+.tip{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-family:Caveat,cursive;font-size:1.25rem;color:var(--mist);z-index:5;pointer-events:none}
+.card{min-height:178px;margin:24px 0 0;padding:22px 24px;border-radius:24px;background:linear-gradient(160deg,rgba(255,255,255,.11),rgba(255,255,255,.04));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,217,106,.3);box-shadow:0 14px 40px -16px rgba(0,0,0,.6)}
+.card .in{animation:fadeup .6s ease-out both}
+@keyframes fadeup{from{opacity:0;transform:translateY(8px)}}
+.card h3{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;font-size:1.75rem;margin:0 0 6px;color:var(--glow)}
+.card p{margin:0}
+
+/* CARTA */
+.letter{display:none;text-align:center;padding-top:80px;padding-bottom:30px}
+.letter.on{display:block;animation:rise 2s ease-out both}
+.letter .heart{font-size:2.2rem;filter:drop-shadow(0 0 16px rgba(244,166,200,.7))}
+.letter p{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.65rem;line-height:1.5;margin:0 0 1em}
+.letter .sign{font-family:Caveat,cursive;color:var(--rose);font-size:2.2rem}
+.skip{display:block;margin:22px auto 0;background:none;border:0;color:var(--mist);font:inherit;font-size:.9rem;text-decoration:underline;cursor:pointer}
+.listen{text-align:center;padding:40px 24px 100px;color:var(--mist);font-size:.95rem}
+.listen b{color:var(--moon);font-weight:600}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="beesym" viewBox="0 0 46 36">
+ <g class="wing"><ellipse cx="17" cy="9" rx="9" ry="6" fill="#e9eaff" opacity=".75" transform="rotate(-25 17 9)"/><ellipse cx="28" cy="9" rx="9" ry="6" fill="#e9eaff" opacity=".6" transform="rotate(20 28 9)"/></g>
+ <ellipse cx="23" cy="22" rx="14" ry="9.5" fill="#f2a31b"/>
+ <path d="M17 13.5v17M23 12.5v19M29 13.5v17" stroke="#2a1a3a" stroke-width="3.2" stroke-linecap="round"/>
+ <circle cx="38" cy="21" r="5.2" fill="#2a1a3a"/><circle cx="39.6" cy="19.6" r="1.1" fill="#fff"/>
+ <path d="M9.5 22l-4 1.5" stroke="#2a1a3a" stroke-width="2.4" stroke-linecap="round"/>
+ <path d="M40 16c2-4 4-5 6-5" stroke="#2a1a3a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+</symbol></defs></svg>
+
+<main>
+<section class="hero">
+  <div class="moon"></div>
+  <p class="hand">para Jimena, de Pau ❤️</p>
+  <h1>honeybee</h1>
+  <p class="lead">Una canción de Olivia Rodrigo, una noche de parque y una excusa para decirte cosas bonitas.</p>
+  <a class="cue" href="#historia">baja con calma</a>
+  <svg class="hills" viewBox="0 0 400 190" preserveAspectRatio="none" aria-hidden="true">
+   <path d="M0 110C60 70 120 90 190 75S330 40 400 80V190H0z" fill="#1a1a58"/>
+   <path d="M0 140C80 105 150 125 230 105S350 100 400 120V190H0z" fill="#10113a"/>
+   <g fill="#080a24"><path d="M0 190V150H400V190z"/><rect x="0" y="138" width="400" height="5"/><rect x="0" y="154" width="400" height="4"/>
+   <path d="M0 160V122l5-9 5 9v38zM30 160V122l5-9 5 9v38zM60 160V122l5-9 5 9v38zM90 160V122l5-9 5 9v38zM120 160V122l5-9 5 9v38zM150 160V122l5-9 5 9v38zM180 160V122l5-9 5 9v38zM210 160V122l5-9 5 9v38zM240 160V122l5-9 5 9v38zM270 160V122l5-9 5 9v38zM300 160V122l5-9 5 9v38zM330 160V122l5-9 5 9v38zM360 160V122l5-9 5 9v38zM390 160V122l5-9 5 9v38z"/></g>
+  </svg>
+</section>
+
+<section class="story" id="historia">
+  <svg class="drop" viewBox="0 0 30 46" aria-hidden="true"><path d="M15 2C15 2 3 20 3 30a12 12 0 0024 0C27 20 15 2 15 2z" fill="#f2a31b"/><path d="M9 30a6 6 0 006 6" stroke="#ffe9a8" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+  <h2>Antes de que suene</h2>
+  <p>“honeybee” es la tercera canción de <em>you seem pretty sad for a girl so in love</em>, y es de esas que parecen sencillas hasta que la escuchas bien: es dulce, pero debajo hay un poquito de miedo. Porque cuando algo es tan bonito, da miedo perderlo.</p>
+  <p>Olivia la escribió en alrededor de media hora, sentada al piano en su casa, y dice que es una de sus favoritas. A veces lo que más importa se sabe rápido.</p>
+  <p>Si la escuchas desde el principio, se cuela un grillo en la grabación. Nunca lo borraron, y por eso suena a verano y a noche tibia. Lo imperfecto que se queda suele ser lo mejor.</p>
+  <p>Me recordó a ti. Por eso armé este parque de noche: hay seis luciérnagas escondidas, cada una con algo que quiero decirte.</p>
+</section>
+
+<section class="park" id="parque">
+  <h2 style="text-align:center">El parque a oscuras</h2>
+  <div class="hud">
+    <svg class="jar" viewBox="0 0 46 60" aria-hidden="true">
+      <defs><clipPath id="jc"><path d="M9 14h28l4 8v30a6 6 0 01-6 6H11a6 6 0 01-6-6V22z"/></clipPath></defs>
+      <rect x="12" y="4" width="22" height="8" rx="2" fill="#c98a0a"/>
+      <g clip-path="url(#jc)"><rect id="fill" x="0" y="0" width="46" height="60" fill="#f2a31b" style="transform:translateY(60px);transition:transform 1s ease"/></g>
+      <path d="M9 14h28l4 8v30a6 6 0 01-6 6H11a6 6 0 01-6-6V22z" fill="rgba(255,255,255,.07)" stroke="#ffd96a" stroke-width="1.8"/>
+    </svg>
+    <span id="count">Frasco de miel: 0 de 6 luciérnagas</span>
+  </div>
+  <div class="scene" id="scene">
+    <div class="st"></div><div class="m2"></div>
+    <svg class="land" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 70C70 30 140 60 220 40S350 20 400 55V200H0z" fill="#1b1655"/>
+      <path d="M0 110C90 75 170 100 250 80S360 85 400 95V200H0z" fill="#120f3b"/>
+      <path d="M0 150C100 130 200 150 400 135V200H0z" fill="#0a0a26"/>
+      <g fill="#07071c"><rect x="0" y="150" width="400" height="5"/><rect x="0" y="170" width="400" height="4"/>
+      <path d="M0 200V132l5-10 5 10v68zM34 200V132l5-10 5 10v68zM68 200V132l5-10 5 10v68zM102 200V132l5-10 5 10v68zM136 200V132l5-10 5 10v68zM170 200V132l5-10 5 10v68zM204 200V132l5-10 5 10v68zM238 200V132l5-10 5 10v68zM272 200V132l5-10 5 10v68zM306 200V132l5-10 5 10v68zM340 200V132l5-10 5 10v68zM374 200V132l5-10 5 10v68z"/></g>
+    </svg>
+    <svg class="bee" id="bee" viewBox="0 0 46 36"><use href="#beesym"/></svg>
+    <div class="tip" id="tip">mueve la abejita y toca las luces</div>
+  </div>
+  <div class="card" id="card" aria-live="polite"><div class="in"><h3>Toca una luz</h3><p>Cada luciérnaga guarda un pedacito de esta canción y de lo que me haces sentir.</p></div></div>
+</section>
+
+<section class="letter" id="letter">
+  <div class="heart" aria-hidden="true">❤️</div>
+  <h2>Ya las encontraste todas</h2>
+  <p>Jimena, si “honeybee” fuera un apodo, sería para alguien dulce, cálida y difícil de dejar de mirar.</p>
+  <p>Ojalá esta canción te acompañe esta noche y te deje una sonrisa. Eso es lo único que quería.</p>
+  <p class="sign">Pau ❤️</p>
+</section>
+<button class="skip" id="skip">¿no encuentras todas? ver la carta</button>
+
+<div class="listen">Ponla ahora: <b>“honeybee”</b>, Olivia Rodrigo. Y escucha bien el inicio, ahí está el grillo.</div>
+</main>
+
+<script>
+var M=[
+ ["Caminar a oscuras","Con la persona correcta, caminar sin rumbo de noche ya es un plan perfecto.",18,24],
+ ["Saltar la cerca","La canción habla de colarse a un parque ya cerrado. Contigo hasta una pequeña locura sonaría a buena idea.",74,22],
+ ["Dulce, con un poco de miedo","Cuando algo es tan bonito, dan ganas de cuidarlo más. Así me siento yo con lo bueno que hay en tu vida y en la mía.",44,40],
+ ["El grillo del inicio","Nadie quiso borrar ese grillo. Lo imperfecto también se queda, y muchas veces es lo que más se recuerda.",84,50],
+ ["Media hora","Dicen que la escribió en media hora. Yo tardé menos en saber que quería dedicártela.",20,56],
+ ["Tu apodo","Si “honeybee” fuera un apodo, te quedaría perfecto. Sería para ti sin dudarlo.",58,62]
+];
+var seen=0,scene=document.getElementById('scene'),card=document.getElementById('card');
+M.forEach(function(m,i){
+  var b=document.createElement('button');b.className='ff';b.style.left=m[2]+'%';b.style.top=m[3]+'%';
+  b.style.animationDelay=(i*1.3)+'s';b.setAttribute('aria-label','Luciérnaga: '+m[0]);
+  b.innerHTML='<i></i><b></b>';
+  b.onclick=function(){
+    b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');
+    card.innerHTML='<div class="in"><h3>'+m[0]+'</h3><p>'+m[1]+'</p></div>';
+    document.getElementById('tip').style.display='none';
+    if(!b.classList.contains('seen')){b.classList.add('seen');seen++;
+      document.getElementById('count').textContent='Frasco de miel: '+seen+' de 6 luciérnagas';
+      document.getElementById('fill').style.transform='translateY('+(60-seen*8.2)+'px)';
+      if(seen===6)showLetter();}
+  };
+  scene.appendChild(b);
+});
+function showLetter(){var l=document.getElementById('letter');l.classList.add('on');document.getElementById('skip').style.display='none';
+  setTimeout(function(){l.scrollIntoView({behavior:'smooth',block:'start'})},1100);}
+document.getElementById('skip').onclick=showLetter;
+
+/* abeja que sigue el dedo o el cursor */
+var bee=document.getElementById('bee'),bx=40,by=300,tx=null,ty=null,flip=1,t0=0;
+function aim(e){var r=scene.getBoundingClientRect(),p=e.touches?e.touches[0]:e;tx=p.clientX-r.left-23;ty=p.clientY-r.top-18}
+scene.addEventListener('pointermove',aim);scene.addEventListener('pointerdown',aim);
+scene.addEventListener('pointerleave',function(){tx=null});
+function fly(t){
+  var W=scene.clientWidth,H=scene.clientHeight,gx,gy;
+  if(tx===null){gx=W*.5+Math.sin(t/2300)*W*.34;gy=H*.45+Math.sin(t/1300)*H*.2}else{gx=tx;gy=ty+Math.sin(t/200)*3}
+  var dx=gx-bx;bx+=dx*.045;by+=(gy-by)*.045;if(Math.abs(dx)>1.5)flip=dx>0?1:-1;
+  bee.style.transform='translate('+bx+'px,'+by+'px) scaleX('+flip+')';
+  requestAnimationFrame(fly)}
+requestAnimationFrame(fly);
+
+/* cielo con estrellas y luciérnagas */
+var c=document.getElementById('sky'),x=c.getContext('2d'),P=[],W,H;
+function size(){W=c.width=innerWidth;H=c.height=innerHeight}
+size();addEventListener('resize',size);
+for(var k=0;k<55;k++)P.push({x:Math.random(),y:Math.random(),r:Math.random()*1.7+.5,s:Math.random()*.0004+.0001,p:Math.random()*6,g:k%3===0});
+var still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function draw(t){x.clearRect(0,0,W,H);
+  P.forEach(function(q){var a=.3+.7*Math.abs(Math.sin(t/1500+q.p));
+    var px=q.x*W+Math.sin(t*q.s+q.p)*34,py=((q.y*H-t*q.s*45)%H+H)%H;
+    x.beginPath();x.fillStyle=q.g?'rgba(255,217,106,'+(a*.85)+')':'rgba(243,241,255,'+(a*.6)+')';
+    x.shadowColor=q.g?'rgba(255,217,106,.95)':'rgba(243,241,255,.8)';x.shadowBlur=q.g?14:6;
+    x.arc(px,py,q.r,0,6.3);x.fill()});
+  if(!still)requestAnimationFrame(draw)}
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
